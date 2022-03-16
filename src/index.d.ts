@@ -1,17 +1,22 @@
-import { Chat as ChatAttributes, Member as MemberAttributes, App as AppAttributes, FileType, ChatConnectOptions, ChatListFetchOptions, ChatListFetchHandler, MessagesFetchHandler, MessagesUpdateHandler, MessageReceiveHandler, MemberPermissionType, ChatRefreshHandler, ChatListRefreshHandler, ChatConnectHandler, MessageSendHandler, ChatListConnectHandler } from './chatty-types';
+import { ChatType, MemberType, AppType, FileType, ChatConnectOptions, ChatListFetchOptions, ChatListFetchHandler, MessagesFetchHandler, MessagesUpdateHandler, MessageReceiveHandler, MemberPermissionType, ChatRefreshHandler, ChatListRefreshHandler, ChatConnectHandler, MessageSendHandler, ChatListConnectHandler } from './Types';
 import { Chat } from './Chat';
 import { ChatList } from './ChatList';
 interface InitializeOptions {
     apiKey: string;
-    member: Partial<MemberAttributes>;
+    member: Partial<MemberType>;
 }
 declare class Chatty {
     static apiUrl: string;
     static apiKey: string | undefined;
-    static app: AppAttributes | undefined;
-    static member: Partial<MemberAttributes> | undefined;
+    static app: AppType | undefined;
+    static member: Partial<MemberType> | undefined;
     chatlist: ChatList | null;
     chat: Chat | null;
+    /**
+     * @constructor
+     * @param chattyInstance instance of chatlist in case of moving from chatlist
+     * @description When creating chat instance to update change of chat room to chat list automatically, put chat list instance as a parameter of Chat constructor
+     */
     constructor(chattyInstance?: Chatty);
     static init(initials: InitializeOptions): Promise<void>;
     static exit(): Promise<void>;
@@ -104,7 +109,7 @@ declare class Chatty {
     */
     static generateDistinctKey(data: Array<string> | string): string;
     static createChat(payload: any): Promise<unknown>;
-    static updateChat(chat: ChatAttributes): Promise<unknown>;
+    static updateChat(chat: ChatType): Promise<unknown>;
     /**
      * @description
      * non-socket(API call) 방식으로 message를 생성하는 함수
@@ -122,7 +127,7 @@ declare class Chatty {
      *
      * @param member
      */
-    static updateMember(member: Partial<MemberAttributes>): Promise<MemberAttributes>;
+    static updateMember(member: Partial<MemberType>): Promise<MemberType>;
     /**
      * @deprecated
      */
@@ -179,5 +184,5 @@ export declare class ChattyException extends Error {
     errorCode: string;
     constructor(errorCode: string, customMessage?: string);
 }
-export * as ChattyTypes from './chatty-types';
+export * as ChattyTypes from './Types';
 export default Chatty;

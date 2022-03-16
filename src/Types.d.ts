@@ -1,8 +1,13 @@
 /**
- * Model App
  *
+  ___          _       _____
+ | _ ) __ _ __(_)__ __|_   _|  _ _ __  ___ ___
+ | _ \/ _` (_-< / _|___|| || || | '_ \/ -_|_-<
+ |___/\__,_/__/_\__|    |_| \_, | .__/\___/__/
+                            |__/|_|
+
  */
-export declare type App = {
+export declare type AppType = {
     id: string;
     name: string;
     server: string;
@@ -28,22 +33,14 @@ export declare type App = {
     updatedAt: Date;
     deletedAt: Date | null;
 };
-/**
- * Model AppUser
- *
- */
-export declare type AppUser = {
+export declare type AppUserType = {
     role: AppRoleType;
     createdAt: Date;
     updatedAt: Date;
     AppId: string;
     UserId: string;
 };
-/**
- * Model User
- *
- */
-export declare type User = {
+export declare type UserType = {
     id: string;
     email: string;
     password: string;
@@ -58,17 +55,13 @@ export declare type User = {
     updatedAt: Date;
     deletedAt: Date | null;
 };
-/**
- * Model Chat
- *
- */
-export declare type Chat = {
+export declare type ChatType = {
     id: string;
     private: boolean;
     open: boolean;
     name: string;
     image: string;
-    lastMessage: Message | null;
+    lastMessage: MessageType | null;
     data: object | null;
     distinctKey: string;
     group: string;
@@ -78,11 +71,7 @@ export declare type Chat = {
     deletedAt: Date | null;
     AppId: string;
 };
-/**
- * Model ChatMember
- *
- */
-export declare type ChatMember = {
+export declare type ChatMemberType = {
     missedCount: number;
     role: ChatRoleType;
     createdAt: Date;
@@ -90,11 +79,7 @@ export declare type ChatMember = {
     ChatId: string;
     MemberId: string;
 };
-/**
- * Model Member
- *
- */
-export declare type Member = {
+export declare type MemberType = {
     id: string;
     name: string;
     language: string;
@@ -110,18 +95,14 @@ export declare type Member = {
     deletedAt: Date | null;
     AppId: string;
 };
-/**
- * Model Message
- *
- */
-export declare type Message = {
+export declare type MessageType = {
     id: string;
     text: string | null;
     files: Array<{
         uri: string;
     }> | null;
     json: object | null;
-    type: MessageType;
+    type: MessageFormatType;
     translation: TranslationIndexSignature | null;
     by: ByType;
     readReceipt: number;
@@ -131,11 +112,7 @@ export declare type Message = {
     ChatId: string;
     SenderId: string | null;
 };
-/**
- * Model Invitation
- *
- */
-export declare type Invitation = {
+export declare type InvitationType = {
     role: string;
     accept: boolean;
     email: string;
@@ -144,15 +121,6 @@ export declare type Invitation = {
     updatedAt: Date;
     AppId: string;
 };
-/**
- *
-  ___          _       _____
- | _ ) __ _ __(_)__ __|_   _|  _ _ __  ___ ___
- | _ \/ _` (_-< / _|___|| || || | '_ \/ -_|_-<
- |___/\__,_/__/_\__|    |_| \_, | .__/\___/__/
-                            |__/|_|
-
- */
 export declare type DeviceType = {
     platform: string;
     language: string;
@@ -182,7 +150,7 @@ export declare type PricingType = 'FREE' | 'PRODUCTION' | 'ADVANCED' | 'ENTERPRI
 export declare type AppStateType = 'ACTIVE' | 'DEACTIVE';
 export declare type AppRoleType = 'OWNER' | 'DEVELOPER' | 'MANAGER';
 export declare type ChatRoleType = 'OWNER' | 'MEMBER' | 'OBSERVER';
-export declare type MessageType = 'TEXT' | 'FILE' | 'JSON';
+export declare type MessageFormatType = 'TEXT' | 'FILE' | 'JSON';
 export interface SystemMessagesIndexSignature {
     [key: string]: string;
 }
@@ -245,19 +213,19 @@ export interface ChatListFetchOptions {
 export declare type MessagesFetchResponseType = {
     refresh: boolean;
     hasNext: boolean;
-    messages: Array<Message>;
+    messages: Array<MessageType>;
 } | null;
-export declare type ChatConnectResponseType = Chat | null;
+export declare type ChatConnectResponseType = ChatType | null;
 export declare type ChatListConnectResponseType = {} | null;
-export declare type MessageSendResponseType = Message | null;
-export declare type MessageReceiveResponseType = Message | null;
-export declare type MessagesUpdateResponseType = Array<Message> | null;
-export declare type ChatListRefreshResponseType = Chat | null;
-export declare type ChatRefreshResponseType = Chat | null;
+export declare type MessageSendResponseType = MessageType | null;
+export declare type MessageReceiveResponseType = MessageType | null;
+export declare type MessagesUpdateResponseType = Array<MessageType> | null;
+export declare type ChatListRefreshResponseType = ChatType | null;
+export declare type ChatRefreshResponseType = ChatType | null;
 export declare type ChatListFetchResponseType = {
     refresh: boolean;
     hasNext: boolean;
-    chats: Array<Chat>;
+    chats: Array<ChatType>;
 } | null;
 export declare type ErrorResponseType = {
     message: string;

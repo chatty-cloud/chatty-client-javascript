@@ -1,5 +1,5 @@
 import { Socket } from 'socket.io-client';
-import { ChatListFetchOptions, ChatListFetchHandler, ChatListRefreshHandler, ChatListConnectHandler } from './chatty-types';
+import { ChatListFetchOptions, ChatListFetchHandler, ChatListRefreshHandler, ChatListConnectHandler } from './Types';
 export declare class ChatList {
     socket: Socket | null;
     connectHandler: ChatListConnectHandler | null;
