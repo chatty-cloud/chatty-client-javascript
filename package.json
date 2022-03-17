@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "description": "Front side client sdk to use chatty cloud service",
   "main": "index.js",
-  "types": "src/index.d.ts",
+  "types": "index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
