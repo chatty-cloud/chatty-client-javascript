@@ -19,11 +19,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
       - run: git config --global user.email "landgrenunit@gmail.com"
       - run: git config --global user.name "landgrenunit"
-      - uses: actions/setup-node@v2
-        with:
-          node-version: 16.x
+      # - uses: actions/setup-node@v2
+      #   with:
+      #     node-version: 16.x
       - run: npm version patch
       - run: git push origin main --tags
       - uses: actions/upload-artifact@v2
