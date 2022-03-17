@@ -1,8 +1,8 @@
 name: Publish
 
-on:
-  release:
-    types: [created]
+on: workflow_dispatch
+  # release:
+  #   types: [created]
 
 jobs:
   # build:
@@ -14,13 +14,11 @@ jobs:
   #         node-version: 16.x
   #     - run: yarn
 
-  bump-version:
+  version-patch:
     # needs: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
       - run: git config --global user.email "landgrenunit@gmail.com"
       - run: git config --global user.name "landgrenunit"
       # - uses: actions/setup-node@v2
@@ -34,7 +32,7 @@ jobs:
           path: ./
 
   publish-npm:
-    needs: bump-version
+    needs: version-patch
     runs-on: ubuntu-latest
     permissions:
       packages: write
