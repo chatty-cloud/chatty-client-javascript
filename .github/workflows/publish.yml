@@ -42,11 +42,11 @@ jobs:
       contents: read
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      # - uses: actions/setup-node@v2
       - run: git config --global user.email "landgrenunit@gmail.com"
       - run: git config --global user.name "landgrenunit"
         with:
-          node-version: 16.x
+          # node-version: 16.x
           registry-url: https://registry.npmjs.org
       - run: npm publish
         env:
