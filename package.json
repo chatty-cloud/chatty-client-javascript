@@ -14,7 +14,7 @@
   },
   "homepage": "https://www.chatty-cloud.com",
   "keywords": [],
-  "author": "chatty-cloud<administrator@chatty-cloud.com>",
+  "author": "chatty-client<administrator@chatty-cloud.com>",
   "license": "MIT",
   "dependencies": {
     "socket.io-client": "^4.1.3"
