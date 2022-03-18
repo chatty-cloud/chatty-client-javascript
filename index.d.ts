@@ -1,10 +1,6 @@
-import { ChatType, MemberType, AppType, FileType, ChatConnectOptions, ChatListFetchOptions, ChatListFetchHandler, MessagesFetchHandler, MessagesUpdateHandler, MessageReceiveHandler, MemberPermissionType, ChatRefreshHandler, ChatListRefreshHandler, ChatConnectHandler, MessageSendHandler, ChatListConnectHandler } from './Types';
+import { ChatType, MemberType, AppType, FileType, ChatConnectOptions, ChatListFetchOptions, ChatListFetchHandler, MessagesFetchHandler, MessagesUpdateHandler, MessageReceiveHandler, MemberPermissionType, ChatRefreshHandler, ChatListRefreshHandler, ChatConnectHandler, MessageSendHandler, ChatListConnectHandler, InitializePayloads } from './Types';
 import { Chat } from './Chat';
 import { ChatList } from './ChatList';
-interface InitializeOptions {
-    apiKey: string;
-    member: Partial<MemberType>;
-}
 declare class Chatty {
     static apiUrl: string;
     static apiKey: string | undefined;
@@ -18,7 +14,7 @@ declare class Chatty {
      * @description When creating chat instance to update change of chat room to chat list automatically, put chat list instance as a parameter of Chat constructor
      */
     constructor(chattyInstance?: Chatty);
-    static init(initials: InitializeOptions): Promise<void>;
+    static init(initials: InitializePayloads): Promise<void>;
     static exit(): Promise<void>;
     /**
      

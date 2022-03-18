@@ -239,6 +239,10 @@ export declare type MessageReceiveHandler = (res: MessageReceiveResponseType, er
 export declare type MessagesUpdateHandler = (res: MessagesUpdateResponseType, err: ErrorResponseType) => void;
 export declare type ChatListRefreshHandler = (res: ChatListRefreshResponseType, err: ErrorResponseType) => void;
 export declare type ChatRefreshHandler = (res: ChatRefreshResponseType, err: ErrorResponseType) => void;
+export interface InitializePayloads {
+    apiKey: string;
+    member: Partial<MemberType>;
+}
 /**
  *
   ___             _      _____
